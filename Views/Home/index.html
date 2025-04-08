@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Welcome to the E-Commerce Chatbot!</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to E-Commerce Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+
+        section {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+            .features ul {
+                list-style: disc;
+                padding-left: 1.5rem;
+                color: #333;
+            }
+
+        .chat-btn {
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            background-color: #28a745;
+            color: white;
+            padding: 0.75rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+            .chat-btn:hover {
+                background-color: #218838;
+            }
+
+            .chat-btn span {
+                font-size: 1.4rem;
+                margin-right: 8px;
+            }
+
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to E-Commerce Chatbot</h1>
+        <nav>
+            <a href="/swagger">View API Docs</a>
+
+            <a href="/pages/index.html">Home</a>
+            <a href="/pages/products.html">Products</a>
+            <a href="/pages/chat.html">Chat</a>
+            <a href="/pages/contact.html">Contact</a>
+        </nav>
+
+    </header>
+
+    <main>
+        <section>
+            <h2>Shop Smarter with Our AI-Powered Chatbot</h2>
+            <p>
+                Our E-Commerce Chatbot is designed to simplify your shopping experience.
+                Whether you’re searching for the latest trends, need product details, or want
+                quick support — our intelligent assistant is here 24/7 to help.
+            </p>
+
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Instant product search and suggestions</li>
+                    <li>Personalized recommendations based on preferences</li>
+                    <li>Easy navigation and user-friendly interaction</li>
+                    <li>Quick support and order status inquiries</li>
+                    <li>Seamless shopping through conversational interface</li>
+                </ul>
+            </div>
+
+            <a class="chat-btn" href="chat.html">
+                <span>💬</span> Start Chatting
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 E-Commerce Chatbot. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

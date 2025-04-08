@@ -1,0 +1,6 @@
+@ECommerceChatbot_HostAddress = http://localhost:5157
+
+GET {{ECommerceChatbot_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

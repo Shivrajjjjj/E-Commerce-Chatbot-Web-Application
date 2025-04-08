@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Commerce Chatbot</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #fce3ec, #f9f9f9);
+        }
+
+        .project-info {
+            background-color: #fff;
+            padding: 30px 40px;
+            margin: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+            .project-info h2 {
+                color: #e91e63;
+            }
+
+            .project-info p {
+                font-size: 16px;
+                line-height: 1.7;
+                color: #333;
+            }
+
+        #chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        #chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            max-height: 500px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 999;
+            animation: fadeInUp 0.5s;
+        }
+
+        #chat-header {
+            background-color: #e91e63;
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            #chat-header img {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+            }
+
+        #chatbox {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+
+        #chat-input-area {
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            font-size: 14px;
+        }
+
+        #sendBtn {
+            padding: 12px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+            #sendBtn:hover {
+                background-color: #d81b60;
+            }
+
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+            .message.bot img, .message.user img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+            }
+
+        .message-content {
+            background: #f1f1f1;
+            padding: 8px 12px;
+            border-radius: 12px;
+            max-width: 80%;
+        }
+
+        .message.user .message-content {
+            background: #e3f2fd;
+        }
+        .product-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="project-info">
+        <h2 class="animate__animated animate__fadeInDown">Welcome to Your Smart Shopping Assistant 🤖</h2>
+        <p>
+            Designed to enhance your shopping journey, our chatbot offers instant answers, personalized recommendations, and 24/7 assistance — all within a friendly interface. 🛍️ Whether you're a new visitor or a loyal customer, it's here to make your experience smoother, smarter, and stress-free.
+        </p>
+
+    </div>
+    <section class="product-list container-fluid">
+        <div class="card" style="width: 18rem;">
+
+            <img src="/images/watch.jpg" class="card-img-top" alt="Product 1">
+
+
+
+            <div class="card-body text-center">
+                <h5 class="card-title">Product 1</h5>
+                <p class="card-text text-success fw-bold">₹7,499</p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+       
+        <div class="card" style="width: 18rem;">
+            <img src="../images/shoe.jpg" class="card-img-top" alt="Product 2" />
+            <div class="card-body text-center">
+                <h5 class="card-title">Product 2</h5>
+                <p class="card-text text-success fw-bold">₹11,499</p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+             
+            <img src="../images/watch.jpg" class="card-img-top" alt="Product 3">
+            <div class="card-body text-center">
+                <h5 class="card-title">Product 3</h5>
+                <p class="card-text text-success fw-bold">₹14,999</p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+    <div class="contact-info container my-5 p-4 bg-light rounded shadow-sm">
+        <h2 class="text-center mb-4">Connect With Us</h2>
+        <p class="text-center">
+            Have questions or need help? Our team is here to guide you through your shopping experience.
+        </p>
+        <div class="row text-center mt-4">
+            <div class="col-md-4 mb-3">
+                <i class="bi bi-envelope-fill fs-3 text-danger"></i>
+                <h5 class="mt-2">Email</h5>
+                <p>support@eshopbot.com</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <i class="bi bi-telephone-fill fs-3 text-danger"></i>
+                <h5 class="mt-2">Phone</h5>
+                <p>+91 98765 43210</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <i class="bi bi-geo-alt-fill fs-3 text-danger"></i>
+                <h5 class="mt-2">Address</h5>
+                <p>123 Bot Street, Kolhapur, MH, India</p>
+            </div>
+        </div>
+    </div>
+
+
+    <button id="chat-icon">💬</button>
+
+    <div id="chat-container">
+        <div id="chat-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Bot Icon">
+            E-Shop Bot
+        </div>
+        <div id="chatbox"></div>
+        <div id="chat-input-area">
+            <input type="text" id="userInput" placeholder="Ask me anything..." />
+            <button id="sendBtn">➤</button>
+        </div>
+    </div>
+
+    <script>
+        const chatIcon = document.getElementById("chat-icon");
+        const chatContainer = document.getElementById("chat-container");
+        const chatbox = document.getElementById("chatbox");
+        const userInput = document.getElementById("userInput");
+        const sendBtn = document.getElementById("sendBtn");
+
+        chatIcon.addEventListener("click", () => {
+            chatContainer.style.display = chatContainer.style.display === "flex" ? "none" : "flex";
+        });
+
+        const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+        connection.start().catch(err => console.error(err.toString()));
+
+        function appendMessage(sender, text, isBot) {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${isBot ? 'bot' : 'user'} animate__animated animate__fadeInUp`;
+            messageDiv.innerHTML = `
+                                <img src="${isBot ? 'https://cdn-icons-png.flaticon.com/512/4712/4712027.png' : 'https://cdn-icons-png.flaticon.com/512/1077/1077114.png'}" alt="${sender} Avatar">
+                                <div class="message-content">
+                                    <strong>${sender}:</strong> ${text}
+                                </div>
+                            `;
+            chatbox.appendChild(messageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        sendBtn.addEventListener("click", async () => {
+            const question = userInput.value.trim();
+            if (!question) return;
+
+            appendMessage("You", question, false);
+            userInput.value = "";
+
+            try {
+                const response = await fetch('/api/chatbot/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question })
+                });
+                const data = await response.json();
+                appendMessage("Bot", data.reply, true);
+            } catch (err) {
+                appendMessage("Bot", "Oops! Something went wrong. 😓", true);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to E-Commerce Chatbot</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1e90ff, #007bff);
+            color: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+            header h1 {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                margin-left: 1rem;
+                font-weight: 500;
+                position: relative;
+            }
+
+                nav a::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    background: white;
+                    transition: width 0.3s;
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                }
+
+                nav a:hover::after {
+                    width: 100%;
+                }
+
+        main {
+            padding: 3rem 1.5rem;
+        }
+
+        section {
+            max-width: 960px;
+            margin: auto;
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #007bff;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .features {
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+            .features h3 {
+                color: #333;
+            }
+
+            .features ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .features li {
+                margin: 0.6rem 0;
+                padding-left: 1.2rem;
+                position: relative;
+            }
+
+                .features li::before {
+                    content: "✔";
+                    position: absolute;
+                    left: 0;
+                    color: #28a745;
+                }
+
+        .chat-btn {
+            margin-top: 2rem;
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.9rem 1.6rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+            .chat-btn span {
+                margin-right: 8px;
+            }
+
+            .chat-btn:hover {
+                background-color: #218838;
+                transform: scale(1.05);
+            }
+
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.95rem;
+            color: #555;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+                nav a {
+                    margin-left: 0;
+                    margin-right: 1.2rem;
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>E-Commerce Chatbot</h1>
+        <nav>
+            <a href="/swagger">API Docs</a>
+          
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Shop Smarter with Our AI-Powered Chatbot</h2>
+            <p>
+                Our E-Commerce Chatbot is designed to simplify your shopping experience.
+                Whether you’re searching for the latest trends, need product details, or want
+                quick support — our intelligent assistant is here 24/7 to help.
+            </p>
+
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Instant product search and suggestions</li>
+                    <li>Personalized recommendations based on preferences</li>
+                    <li>Easy navigation and user-friendly interaction</li>
+                    <li>Quick support and order status inquiries</li>
+                    <li>Seamless shopping through conversational interface</li>
+                </ul>
+            </div>
+
+            <a class="chat-btn" href="/pages/chat.html">
+                <span>💬</span> Start Chatting
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 E-Commerce Chatbot. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

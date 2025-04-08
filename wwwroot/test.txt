@@ -1,0 +1,2 @@
+﻿Hello! Static file serving is working correctly.
+This is a test file served from the wwwroot directory.
