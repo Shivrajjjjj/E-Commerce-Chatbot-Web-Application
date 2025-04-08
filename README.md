@@ -54,3 +54,4 @@ A smart, responsive E-Commerce chatbot application built using **ASP.NET Core 8*
 https://localhost:44346
 or
 http://localhost:5000
+https://localhost:44346/swagger
